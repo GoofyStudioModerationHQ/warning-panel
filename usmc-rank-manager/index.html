@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shared USMC personnel rank manager">
+  <title>USMC Rank Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="entry" class="entry-shell">
+    <section class="entry-card">
+      <div class="brand-icon">M</div>
+      <p class="eyebrow">USMC Personnel Command</p>
+      <h1 id="entry-title">Choose how to enter</h1>
+      <p id="entry-copy" class="entry-copy">HQ leadership can sign in with a personal code. Everyone else can open the shared roster as a view-only guest.</p>
+      <div id="entry-options" class="entry-options">
+        <button id="choose-hq" class="entry-option" type="button"><span class="option-icon">HQ</span><span><strong>Sign in with HQ</strong><small>Use your personal code to open your HQ account and editing authority.</small></span><b>→</b></button>
+        <button id="choose-guest" class="entry-option guest" type="button"><span class="option-icon">G</span><span><strong>Open as a Guest</strong><small>No sign-in required. View personnel, timers, and the complete rank structure.</small></span><b>→</b></button>
+      </div>
+      <form id="hq-form" class="hq-form hidden">
+        <label for="hq-code">Personal HQ access code</label>
+        <input id="hq-code" autocomplete="one-time-code" placeholder="HQ-XXXX-XXXX-XXXX" required>
+        <button class="primary" type="submit">Sign in to HQ account</button>
+        <button id="entry-back" class="text-button" type="button">← Back to entry choices</button>
+      </form>
+      <p class="entry-foot">Only HQ-titled members with an active personal code can sign in.</p>
+    </section>
+  </main>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">M</div><div><h2>USMC Rank</h2><p>Personnel Command</p></div></div>
+      <nav><a href="#personnel" class="active">Personnel</a><a href="#timer">Service Timer</a><a href="#ranks">Rank Structure</a><a href="#command">Rank Command</a></nav>
+      <div class="sidebar-foot"><strong id="access-name">Guest Access</strong><span id="access-rank">View only</span><button id="exit" type="button">Exit panel</button></div>
+    </aside>
+    <section class="main">
+      <header><div><p class="eyebrow">Redfield Military Information</p><h1>USMC Rank Manager</h1><p class="muted">Shared personnel records and leadership controls</p></div><div id="role-badge" class="role-badge">Guest · View only</div></header>
+      <div id="selected-bar" class="selected-bar"><span>Selected personnel</span><strong id="selected-name">No personnel selected</strong><b id="selected-rank">—</b></div>
+      <div class="grid">
+        <article id="personnel" class="panel"><div class="panel-head"><span>01</span><div><p>Roster controls</p><h2>Personnel</h2></div></div><form id="add-form" class="stack authority"><label for="new-name">Roblox usernames</label><div class="inline"><input id="new-name" placeholder="Username or comma-separated names"><button class="primary" type="submit">Add at E-1</button></div></form><div id="roster" class="list"></div></article>
+        <article id="timer" class="panel"><div class="panel-head"><span>02</span><div><p>Count-up service clock</p><h2>Time in Service</h2></div></div><div class="clock"><div><strong id="days">000</strong><small>Days</small></div><i>:</i><div><strong id="hours">00</strong><small>Hours</small></div><i>:</i><div><strong id="mins">00</strong><small>Mins</small></div><i>:</i><div><strong id="secs">00</strong><small>Secs</small></div></div><div class="timer-actions owner-only"><input id="timer-seconds" type="number" min="0" value="0"><button data-timer="start" class="primary">Start</button><button data-timer="pause">Pause</button><button data-timer="reset">Reset</button></div><p class="hint">Enter 0 to start from zero. Timer controls are owner-only.</p></article>
+        <article id="ranks" class="panel"><div class="panel-head"><span>03</span><div><p>Lowest to highest</p><h2>Rank Structure</h2></div></div><div id="rank-list" class="rank-list"></div></article>
+        <article id="command" class="panel"><div class="panel-head"><span>04</span><div><p>Leadership controls</p><h2>Rank Command</h2></div></div><form id="rank-form" class="stack authority"><label for="rank-command">Command or direct rank</label><div class="inline"><input id="rank-command" placeholder="P, D, E-4, Cpl, or full rank"><button class="primary" type="submit">Submit</button></div><p class="hint">P promotes one step. D demotes one step. Exact codes, abbreviations, and names set the rank directly.</p></form><section id="owner-code" class="owner-code owner-only"><h3>Personal HQ access</h3><p id="code-status" class="hint">Select an HQ-titled person to create or revoke their code.</p><div class="inline"><button id="create-code" class="primary" type="button">Create new code</button><button id="revoke-code" type="button">Revoke code</button></div><output id="generated-code" class="generated hidden"></output></section></article>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
