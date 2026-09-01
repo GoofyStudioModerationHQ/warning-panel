@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Shared USMC personnel rank manager">
   <title>USMC Rank Manager</title>
-  <link rel="stylesheet" href="styles.css?v=20260831-2">
+  <link rel="stylesheet" href="styles.css?v=20260901-logs">
+  <link rel="stylesheet" href="logs.css?v=20260901-logs">
 </head>
 <body>
   <main id="entry" class="entry-shell">
@@ -31,7 +32,7 @@
   <div id="app" class="app hidden">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">M</div><div><h2>USMC Rank</h2><p>Personnel Command</p></div></div>
-      <nav><a href="#personnel" class="active">Personnel</a><a href="#timer">Service Timer</a><a href="#ranks">Rank Structure</a><a href="#command">Rank Command</a></nav>
+      <nav><a href="#personnel" class="active">Personnel</a><a href="#timer">Service Timer</a><a href="#ranks">Rank Structure</a><a href="#command">Rank Command</a><a id="logs-link" class="hidden" href="logs.html">Logs</a></nav>
       <div class="sidebar-foot"><strong id="access-name">Guest Access</strong><span id="access-rank">View only</span><button id="exit" type="button">Exit panel</button></div>
     </aside>
     <section class="main">
@@ -47,8 +48,19 @@
       <footer>USMC Personnel Command · Secure shared records</footer>
     </section>
   </div>
+  <div id="reason-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="reason-title">
+    <form id="reason-form" class="reason-modal">
+      <div class="modal-icon">R</div>
+      <p class="eyebrow">Required record</p>
+      <h2 id="reason-title">Reason for rank change</h2>
+      <p id="reason-summary" class="modal-summary"></p>
+      <label for="rank-reason">Reason</label>
+      <textarea id="rank-reason" minlength="3" maxlength="300" placeholder="Explain why this rank is being changed…" required></textarea>
+      <div class="modal-actions"><button id="cancel-reason" type="button">Cancel</button><button class="primary" type="submit">Confirm rank change</button></div>
+    </form>
+  </div>
   <div id="toast" class="toast" role="status"></div>
   <script src="config.js"></script>
-  <script src="app.js?v=20260831-2"></script>
+  <script src="app.js?v=20260901-logs"></script>
 </body>
 </html>
