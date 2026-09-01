@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Protected USMC personnel warning records">
+  <title>Warning Records · USMC Rank Manager</title>
+  <link rel="stylesheet" href="styles.css?v=20260901-logs">
+  <link rel="stylesheet" href="logs.css?v=20260901-warnings">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">M</div><div><h2>USMC Rank</h2><p>Personnel Command</p></div></div>
+      <nav><a href="index.html#personnel">Personnel</a><a href="index.html#timer">Service Timer</a><a href="index.html#ranks">Rank Structure</a><a href="index.html#command">Rank Command</a><a class="active" href="warning.html">Warning</a><a href="logs.html">Logs</a></nav>
+      <div class="sidebar-foot"><strong id="access-name">HQ Access</strong><span id="access-rank">Checking authorization…</span><button id="exit-warning" type="button">Exit panel</button></div>
+    </aside>
+    <section class="main logs-main">
+      <header class="page-header"><div><p class="eyebrow">Protected personnel record</p><h1>Warning Records</h1><p class="muted">Reasons, totals, and accountability for personnel warnings</p></div><div id="role-badge" class="role-badge">HQ access required</div></header>
+      <div id="warning-content">
+        <div class="logs-toolbar"><a class="back-link" href="index.html">← Rank manager</a><button id="refresh-warnings" type="button">Refresh warnings</button></div>
+        <div id="warning-filter" class="warning-filter hidden"></div>
+        <article class="panel logs-panel"><div class="panel-head"><span>!</span><div><p>Personnel discipline</p><h2>Warning history</h2></div></div><div id="warning-summary-list" class="warning-summary-list"></div><div id="warning-list" class="logs-list"><div class="empty">Loading warnings…</div></div></article>
+      </div>
+      <section id="warning-blocked" class="logs-blocked hidden"><h2>HQ access required</h2><p>Only signed-in HQ leadership can view warning records. Return to the rank manager and sign in with your personal HQ code.</p><a class="back-link" href="index.html">Return to sign in</a></section>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="config.js"></script>
+  <script src="warning.js?v=20260901-warnings"></script>
+</body>
+</html>
