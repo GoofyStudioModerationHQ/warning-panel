@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Protected USMC rank change logs">
+  <title>Rank Change Logs · USMC Rank Manager</title>
+  <link rel="stylesheet" href="styles.css?v=20260901-logs">
+  <link rel="stylesheet" href="logs.css?v=20260901-logs">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-icon">M</div><div><h2>USMC Rank</h2><p>Personnel Command</p></div></div>
+      <nav><a href="index.html#personnel">Personnel</a><a href="index.html#timer">Service Timer</a><a href="index.html#ranks">Rank Structure</a><a href="index.html#command">Rank Command</a><a class="active" href="logs.html">Logs</a></nav>
+      <div class="sidebar-foot"><strong id="access-name">HQ Access</strong><span id="access-rank">Checking authorization…</span><button id="exit-logs" type="button">Exit panel</button></div>
+    </aside>
+    <section class="main logs-main">
+      <header class="page-header"><div><p class="eyebrow">Protected leadership record</p><h1>Rank Change Logs</h1><p class="muted">Reasons and accountability for every promotion, demotion, and direct rank assignment</p></div><div id="role-badge" class="role-badge">HQ access required</div></header>
+      <div id="logs-content">
+        <div class="logs-toolbar"><a class="back-link" href="index.html">← Rank manager</a><button id="refresh-logs" type="button">Refresh logs</button></div>
+        <article class="panel logs-panel"><div class="panel-head"><span>01</span><div><p>Leadership audit</p><h2>Rank history</h2></div></div><div id="logs-list" class="logs-list"><div class="empty">Loading logs…</div></div></article>
+      </div>
+      <section id="logs-blocked" class="logs-blocked hidden"><h2>HQ access required</h2><p>Only signed-in HQ leadership can view rank change logs. Return to the rank manager and sign in with your personal HQ code.</p><a class="back-link" href="index.html">Return to sign in</a></section>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="config.js"></script>
+  <script src="logs.js?v=20260901-logs"></script>
+</body>
+</html>
