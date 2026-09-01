@@ -6,7 +6,7 @@
   <meta name="description" content="Shared USMC personnel rank manager">
   <title>USMC Rank Manager</title>
   <link rel="stylesheet" href="styles.css?v=20260901-logs">
-  <link rel="stylesheet" href="logs.css?v=20260901-grid2">
+  <link rel="stylesheet" href="logs.css?v=20260901-warnings">
 </head>
 <body>
   <main id="entry" class="entry-shell">
@@ -32,12 +32,13 @@
   <div id="app" class="app hidden">
     <aside class="sidebar">
       <div class="brand"><div class="brand-icon">M</div><div><h2>USMC Rank</h2><p>Personnel Command</p></div></div>
-      <nav><a href="#personnel" class="active">Personnel</a><a href="#timer">Service Timer</a><a href="#ranks">Rank Structure</a><a href="#command">Rank Command</a><a id="logs-link" class="hidden" href="logs.html">Logs</a></nav>
+      <nav><a href="#personnel" class="active">Personnel</a><a href="#timer">Service Timer</a><a href="#ranks">Rank Structure</a><a href="#command">Rank Command</a><a id="warning-link" class="hidden" href="warning.html">Warning</a><a id="logs-link" class="hidden" href="logs.html">Logs</a></nav>
       <div class="sidebar-foot"><strong id="access-name">Guest Access</strong><span id="access-rank">View only</span><button id="exit" type="button">Exit panel</button></div>
     </aside>
     <section class="main">
+      <div id="warning-alerts" class="warning-alerts hidden"></div>
       <header class="page-header"><div><p class="eyebrow">Redfield Military Information</p><h1>USMC Rank Manager</h1><p class="muted">Shared personnel records and leadership controls</p></div><div id="role-badge" class="role-badge">Guest · View only</div></header>
-      <div id="selected-bar" class="selected-bar"><div><span>Selected personnel</span><strong id="selected-name">No personnel selected</strong></div><b id="selected-rank">—</b></div>
+      <div id="selected-bar" class="selected-bar"><div><span>Selected personnel</span><strong id="selected-name">No personnel selected</strong></div><b id="selected-rank">—</b><button id="warn-user" class="warning-button authority" type="button">Issue Warning</button></div>
       <div class="workspace">
         <article id="personnel" class="panel personnel-panel"><div class="panel-head"><span>01</span><div><p>Shared roster</p><h2>Personnel</h2></div></div><form id="add-form" class="stack authority"><label for="new-name">Add Roblox usernames</label><div class="input-action"><input id="new-name" placeholder="Username or comma-separated names"><button class="primary" type="submit">Add at E-1</button></div></form><div id="roster" class="list"></div></article>
         <article id="timer" class="panel timer-panel"><div class="panel-head"><span>02</span><div><p>Live service clock</p><h2>Time in Service</h2></div></div><div class="clock" aria-label="Days, hours, minutes and seconds"><div><strong id="days">000</strong><small>Days</small></div><i>:</i><div><strong id="hours">00</strong><small>Hours</small></div><i>:</i><div><strong id="mins">00</strong><small>Mins</small></div><i>:</i><div><strong id="secs">00</strong><small>Secs</small></div></div><div class="timer-actions owner-only"><label class="seconds-field"><span>Starting seconds</span><input id="timer-seconds" type="number" min="0" value="0"></label><div class="button-row"><button data-timer="start" class="primary">Start</button><button data-timer="pause">Pause</button><button data-timer="reset">Reset</button></div></div><p class="hint">The timer counts upward and stays synchronized for everyone.</p></article>
@@ -59,8 +60,19 @@
       <div class="modal-actions"><button id="cancel-reason" type="button">Cancel</button><button class="primary" type="submit">Confirm rank change</button></div>
     </form>
   </div>
+  <div id="warning-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="warning-title">
+    <form id="warning-form" class="reason-modal warning-modal-card">
+      <div class="modal-icon warning-icon">!</div>
+      <p class="eyebrow">Personnel warning</p>
+      <h2 id="warning-title">Issue a warning</h2>
+      <p id="warning-summary" class="modal-summary"></p>
+      <label for="warning-reason">Warning reason</label>
+      <textarea id="warning-reason" minlength="3" maxlength="300" placeholder="Explain why this warning is being issued…" required></textarea>
+      <div class="modal-actions"><button id="cancel-warning" type="button">Cancel</button><button class="warning-confirm" type="submit">Issue warning</button></div>
+    </form>
+  </div>
   <div id="toast" class="toast" role="status"></div>
   <script src="config.js"></script>
-  <script src="app.js?v=20260901-savedcodes"></script>
+  <script src="app.js?v=20260901-warnings"></script>
 </body>
 </html>
